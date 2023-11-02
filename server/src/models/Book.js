@@ -3,10 +3,10 @@ module.exports = (sequelize, DataTypes) => {
         Title: DataTypes.STRING,
         Author: DataTypes.STRING,
         Publisher: DataTypes.STRING,
-        PublicationYear: DataTypes.STRING,
+        PublicationYear: DataTypes.INTEGER,
         Genre: DataTypes.STRING,
         Language: DataTypes.STRING,
-        Price: DataTypes.STRING,
+        Price: DataTypes.INTEGER,
     })
     return Book
 }
