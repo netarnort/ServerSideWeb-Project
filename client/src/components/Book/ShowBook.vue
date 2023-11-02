@@ -2,19 +2,19 @@
     <div class="background-image">
         <div class="container-fluid">
             <br>
-
             <div class="card">
                 <div class="card-header">
                     <center>
-                        
                         <h1 class="card-title">แสดงข้อมูลหนังสือ ID : {{ book.id }} </h1>
                     </center>
                 </div>
                 <div class="card-body">
                     <p class="card-text">ชื่อหนังสือ : {{ book.Title }}</p>
                     <p class="card-text">ชื่อผู้แต่ง : {{ book.Author }}</p>
-                    <p class="card-text">หมวดหมู่ : {{ book.Format }}</p>
-                    <p class="card-text">ประเภท : {{ book.Genre }}</p>
+                    <p class="card-text">สำนักพิมพ์ : {{ book.Publisher }}</p>
+                    <p class="card-text">ปีที่พิมพ์ : {{ book.PublicationYear }}</p>
+                    <p class="card-text">หมวดหมู่ : {{ book.Genre }}</p>
+                    <p class="card-text">ภาษา : {{ book.Language }}</p>
                     <p class="card-text">ราคา : {{ book.Price }} บาท</p>
                 </div>
                 <div class="card-footer">
@@ -34,13 +34,11 @@ export default {
             book: null,
         };
     },
-
     methods: {
         navigateTo(route) {
             this.$router.push(route);
         },
     },
-
     created() {
         try {
             let bookId = this.$route.params.bookId;
@@ -64,14 +62,11 @@ export default {
     height: 100vh;
 }
 
-
 .container-fluid {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* text-align: center; */
     margin-top: auto;
-    /* background-color: black; */
     height: 100%;
 }
 
@@ -79,15 +74,12 @@ export default {
     width: 800px;
     margin: 0 auto;
 }
-
 .card-header {
     font-size: 20px;
 }
-
 .card-body {
     padding: 20px;
 }
-
 .card-footer {
     background-color: #eee;
     padding: 10px;
@@ -96,8 +88,6 @@ export default {
     text-align: right;
     width: 100%;
 }
-
-
 .card-text {
     font-size: 20px;
 }

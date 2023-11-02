@@ -69,7 +69,6 @@ export default {
         navigateTo(route) {
             this.$router.push(route)
         },
-
         async deleteBook(book) {
             let result = confirm("ยืนยันที่จะลบข้อมูล?")
             if (result) {
@@ -81,21 +80,15 @@ export default {
                 }
             }
         },
-
         async refreshData() {
             this.books = (await BookService.index()).data
         }
     },
-
     async created() {
         this.books = (await BookService.index()).data
     }
-
 }
-
 </script>
-
-
 
 <style scoped>
 .background-image {
@@ -105,7 +98,6 @@ export default {
     background-repeat: no-repeat;
     height: 100vh;
 }
-
 .head {
     display: flex;
     justify-content: center;
@@ -115,7 +107,6 @@ export default {
 .subhead {
     text-align: left;
 }
-
 
 .container-fluid {
     display: flex;

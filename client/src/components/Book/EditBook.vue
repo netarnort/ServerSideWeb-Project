@@ -15,12 +15,20 @@
                             <input type="text" v-model="book.Author" class="form-control" id="author">
                         </p>
                         <p class="form-group col-md-4">
-                            <label for="format">หมวดหมู่</label>
-                            <input type="text" v-model="book.Format" class="form-control" id="format">
+                            <label for="format">สำนักพิมพ์</label>
+                            <input type="text" v-model="book.Publisher" class="form-control" id="publisher">
                         </p>
                         <p class="form-group col-md-4">
-                            <label for="genre">ประเภท</label>
+                            <label for="genre">ปีที่พิมพ์</label>
+                            <input type="text" v-model="book.PublicationYear" class="form-control" id="publicationyear">
+                        </p>
+                        <p class="form-group col-md-4">
+                            <label for="price">หมวดหมู่</label>
                             <input type="text" v-model="book.Genre" class="form-control" id="genre">
+                        </p>
+                        <p class="form-group col-md-4">
+                            <label for="price">ภาษา</label>
+                            <input type="text" v-model="book.Language" class="form-control" id="language">
                         </p>
                         <p class="form-group col-md-4">
                             <label for="price">ราคา(บาท)</label>
@@ -47,8 +55,10 @@ export default {
             book: {
                 Title: "",
                 Author: "",
-                Format: "",
+                Publisher: "",
+                PublicationYear: "",
                 Genre: "",
+                Language: "",
                 Price: ""
             }
         }
@@ -83,7 +93,6 @@ export default {
     background-repeat: no-repeat;
     height: 100vh;
 }
-
 .container-fluid {
     justify-content: center;
     align-items: center;

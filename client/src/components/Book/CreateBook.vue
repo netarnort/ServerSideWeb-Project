@@ -16,17 +16,25 @@
                             <input type="text" v-model="book.Author" class="form-control" id="author">
                         </p>
                         <p class="form-group col-md-4">
-                            <label for="format">หมวดหมู่</label>
-                            <input type="text" v-model="book.Format" class="form-control" id="format">
+                            <label for="format">สำนักพิมพ์</label>
+                            <input type="text" v-model="book.Publisher" class="form-control" id="format">
                         </p>
                         <p class="form-group col-md-4">
-                            <label for="genre">ประเภท</label>
-                            <input type="text" v-model="book.Genre" class="form-control" id="genre">
+                            <label for="genre">ปีที่พิมพ์</label>
+                            <input type="text" v-model="book.PublicationYear" class="form-control" id="genre">
+                        </p>
+                        <p class="form-group col-md-4">
+                            <label for="price">หมวดหมู่</label>
+                            <input type="text" v-model="book.Genre" class="form-control" id="price">
+                        </p>
+                        <p class="form-group col-md-4">
+                            <label for="price">ภาษา</label>
+                            <input type="text" v-model="book.Language" class="form-control" id="price">
                         </p>
                         <p class="form-group col-md-4">
                             <label for="price">ราคา(บาท)</label>
                             <input type="text" v-model="book.Price" class="form-control" id="price">
-                        </p><br>
+                        </p>
                         <p>
                             <button type="submit" class="btn btn-primary float-right">ยืนยัน</button>
                             <button v-on:click="navigateTo('/books')" class="btn btn-primary float-right">ย้อนกลับ</button>
@@ -47,8 +55,10 @@ export default {
             book: {
                 Title: "",
                 Author: "",
-                Format: "",
+                Publisher: "",
+                PublicationYear: "",
                 Genre: "",
+                Language: "",
                 Price: ""
             }
         }
