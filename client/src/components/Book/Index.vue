@@ -1,23 +1,49 @@
 <template>
-    <div>
+    <div class="background-image">
+        <div>
+            <br><br>
+           
+                <div class="head">
+                <h1 class="text-center">ร้านหนังสือนายกอล์ฟ</h1>
+                <i class="bi bi-book"></i>
+            </div>
+            <br>
+            <div class="subhead d-flex justify-content-between align-items-center mx-3">
+                <h2 class="text-left mb-0">ข้อมูลหนังสือทั้งหมด {{ books.length }} เล่ม</h2>
+                <button v-on:click="navigateTo('/book/create')" class="btn btn-success text-center">เพิ่มหนังสือ</button>
+            </div> <br>
+            <div class="container-fluid ">
 
-        <h2>Get all users</h2>
-        <h4>จํานวนผู้ใช้งาน {{ books.length }}</h4>
-        <button v-on:click="navigateTo('/book/create')">เพิ่มหนังสือ</button>
-        <hr>
-        <div v-for="book in books" v-bind:key="book.id">
-            <p>ชื่อหนังสือ : {{ book.Title }}</p>
-            <p>ชื่อผู้แต่ง : {{ book.Author }} </p>
-            <p>ราคา : {{ book.Price }} </p>
-            <p>
-                <button v-on:click="navigateTo('/book/' + book.id)">ดูข้อมูลหนังสือ</button>
-                <button v-on:click="navigateTo('/book/edit/' + book.id)">แก้ไขข้อมูล</button>
-                <button v-on:click="deleteBook(book)">ลบข้อมูล</button>
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">ชื่อหนังสือ</th>
+                            <th class="text-center">ชื่อผู้แต่ง</th>
+                            <th class="text-center">ราคา(บาท)</th>
+                            <th class="text-center col-md-3">ตัวเลือก</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="book in books" v-bind:key="book.id">
+                            <td class="align-middle">{{ book.id }}</td>
+                            <td class="align-middle">{{ book.Title }}</td>
+                            <td class="align-middle">{{ book.Author }}</td>
+                            <td class="align-middle">{{ book.Price }}</td>
+                            <td>
+                                <button v-on:click="navigateTo('/book/' + book.id)"
+                                    class="btn btn-primary text-center">ดูข้อมูลหนังสือ</button>
+                                <button v-on:click="navigateTo('/book/edit/' + book.id)"
+                                    class="btn btn-warning text-center">แก้ไขข้อมูล</button>
+                                <button v-on:click="deleteBook(book)" class="btn btn-danger text-center">ลบข้อมูล</button>
 
-            </p>
-            <hr>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
         </div>
-
     </div>
 </template>
 
@@ -34,7 +60,6 @@ export default {
 
     methods: {
         navigateTo(route) {
-            // ตรง$router ต้องตั้งให้ตรง folder ของ route
             this.$router.push(route)
         }
     },
@@ -46,7 +71,7 @@ export default {
         },
 
         async deleteBook(book) {
-            let result = confirm("Want to delete?")
+            let result = confirm("ยืนยันที่จะลบข้อมูล?")
             if (result) {
                 try {
                     await BookService.delete(book)
@@ -70,4 +95,32 @@ export default {
 
 </script>
 
-<style scoped></style>
+
+
+<style scoped>
+.background-image {
+    text-align: center;
+    background-image: url('~@/pic/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subhead {
+    text-align: left;
+}
+
+
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+</style>

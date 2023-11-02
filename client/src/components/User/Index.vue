@@ -32,13 +32,6 @@ export default {
     },
 
     methods: {
-        navigateTo(route) {
-            // ตรง$router ต้องตั้งให้ตรง folder ของ route
-            this.$router.push(route)
-        }
-    },
-
-    methods: {
 
         navigateTo(route) {
             this.$router.push(route)

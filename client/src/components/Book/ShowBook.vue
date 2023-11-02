@@ -1,51 +1,105 @@
 <template>
-    <div>
-        <h1>Get User By Id</h1>
-        <hr>
-        <p>ชื่อหนังสือ : {{ book.Title }}</p>
-        <p>ชื่อผู้แต่ง : {{ book.Author }}</p>
-        <p>หมวดหมู่ : {{ book.Format }}</p>
-        <p>ประเภท : {{ book.Genre }}</p>
-        <p>ราคา : {{ book.Price }}</p>
-        <p>
-            <!-- <button v-on:click="navigateTo('/book/edit/' + this.$route.params.bookId)">edit user</button> -->
-            <button v-on:click="navigateTo('/books')">ย้อนกลับ</button>
-        </p>
-        <hr>
+    <div class="background-image">
+        <div class="container-fluid">
+            <br>
+
+            <div class="card">
+                <div class="card-header">
+                    <center>
+                        
+                        <h1 class="card-title">แสดงข้อมูลหนังสือ ID : {{ book.id }} </h1>
+                    </center>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">ชื่อหนังสือ : {{ book.Title }}</p>
+                    <p class="card-text">ชื่อผู้แต่ง : {{ book.Author }}</p>
+                    <p class="card-text">หมวดหมู่ : {{ book.Format }}</p>
+                    <p class="card-text">ประเภท : {{ book.Genre }}</p>
+                    <p class="card-text">ราคา : {{ book.Price }} บาท</p>
+                </div>
+                <div class="card-footer">
+                    <button v-on:click="navigateTo('/books')" class="btn btn-primary">ย้อนกลับ</button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
-
+  
 <script>
-
-import BookService from '@/services/BookService'
+import BookService from '@/services/BookService';
 
 export default {
-
     data() {
         return {
-            book: null
-        }
+            book: null,
+        };
     },
 
     methods: {
         navigateTo(route) {
-            // ตรง$router ต้องตั้งให้ตรง folder ของ route
-            this.$router.push(route)
-        }
+            this.$router.push(route);
+        },
     },
 
-    async created() {
+    created() {
         try {
-            let bookId = this.$route.params.bookId
-            this.book = (await BookService.show(bookId)).data
-            console.log(this.book);
+            let bookId = this.$route.params.bookId;
+            BookService.show(bookId).then((response) => {
+                this.book = response.data;
+                console.log(this.book);
+            });
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }
-    
+    },
+};
+</script>
+  
+<style scoped>
+.background-image {
+    text-align: center;
+    background-image: url('~@/pic/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 
-</script>
 
-<style scoped></style>
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+    margin-top: auto;
+    /* background-color: black; */
+    height: 100%;
+}
+
+.card {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.card-header {
+    font-size: 20px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-footer {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    float: right;
+    text-align: right;
+    width: 100%;
+}
+
+
+.card-text {
+    font-size: 20px;
+}
+</style>
+  
